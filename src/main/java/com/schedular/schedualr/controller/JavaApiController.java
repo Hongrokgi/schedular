@@ -2,6 +2,8 @@ package com.schedular.schedualr.controller;
 
 import com.schedular.schedualr.domain.dto.CameraResponseDto;
 import com.schedular.schedualr.domain.entity.Camera;
+import com.schedular.schedualr.domain.vo.ProductVo;
+import com.schedular.schedualr.domain.vo.UserVo;
 import com.schedular.schedualr.service.CameraService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -45,4 +47,14 @@ public class JavaApiController {
         return cameraService.changeEventListener(id);
     }
 
+    /* json list 값 받기 */
+    @PostMapping("/api/test")
+    public UserVo testApiTest(@RequestBody UserVo userVo) {
+        System.out.println("userVo = " + userVo.toString());
+
+        for (ProductVo product : userVo.getProducts()) {
+            System.out.println("product = " + product.toString());
+        }
+        return userVo;
+    }
 }
